@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //            category-master
-const Category = require('../model/categoryschema');
+const Category = require('../categoryschema');
 // create a new category
 router.post('/cartegory', async  (req,res)=>{  
     try{
@@ -64,7 +64,7 @@ router.get('/cartegory/:id', async(req,res)=>{
 
   // product-master
 
-const product = require('../model/productschema');
+const product = require('../productschema');
 
   //    post data
  router.post('/product',async (req,res)=>{ 
