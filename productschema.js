@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
- 
-
     
-// ProductSchema Modal Schema
 const ProductSchema = new mongoose.Schema({
    
     productId:String,
@@ -12,10 +9,6 @@ const ProductSchema = new mongoose.Schema({
     
 });
      
-// Creating model objects
-
 const  product =  new mongoose.model('Product', ProductSchema);
-    
-// Exporting our model objects
 
 module.exports = product
