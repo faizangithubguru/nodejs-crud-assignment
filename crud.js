@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-//            category-master
 const Category = require('../categoryschema');
-// create a new category
+
 router.post('/cartegory', async  (req,res)=>{  
     try{
         const categroy = new Category(req.body);
@@ -13,7 +12,7 @@ router.post('/cartegory', async  (req,res)=>{
         res.json({message: err.message})
     }
 });
-// show all categories
+
 router.get('/cartegory',async (req,res)=> {
     try{
         const {page = 1, limit=10} = req.query
@@ -23,7 +22,7 @@ router.get('/cartegory',async (req,res)=> {
         res.json({message: err.message})
     }
     });
-// show category by ID
+
 router.get('/cartegory/:id', async(req,res)=>{
     try{
         const _id = req.params.id
@@ -35,7 +34,7 @@ router.get('/cartegory/:id', async(req,res)=>{
  }
  
  });
-// updata the category by id 
+
  router.put('/cartegory/:id',async (req,res)=>{
     try{
         const _id = req.params.id
@@ -45,7 +44,7 @@ router.get('/cartegory/:id', async(req,res)=>{
         res.json({message: err.message})
     }
     });
-// delete the category by id
+
    router.delete('/cartegory/:id',async (req,res)=>{
     try{ const _id = req.params.id;
          const deletecategroy = await Category.findByIdAndDelete(_id);
@@ -59,14 +58,8 @@ router.get('/cartegory/:id', async(req,res)=>{
   
   });
 
-  // all data two table
-
-
-  // product-master
-
 const product = require('../productschema');
 
-  //    post data
  router.post('/product',async (req,res)=>{ 
     try{
         const products = new product(req.body)
@@ -77,7 +70,6 @@ const product = require('../productschema');
     }
     })
 
-    // get data
 router.get('/product', async (req,res)=> {
     try{
         const {page = 1,limit=10}= req.query;
@@ -90,7 +82,7 @@ router.get('/product', async (req,res)=> {
 
  router.get('/productlist',async(req,res)=>{
     try{
-    //   const _id = req.params.id; 
+    
     const {page = 1,limit=10}= req.query; 
      const products = await product.find().populate('category').limit(limit*1).skip((page-1)*limit);
      res.json(products);
