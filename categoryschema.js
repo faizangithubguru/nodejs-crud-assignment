@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
  
-// CategorySchema Modal Schema
 const CategorySchema = new mongoose.Schema({
    
     categoryId:String,
